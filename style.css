@@ -41,6 +41,11 @@ header {
   padding: 15px 40px;
   z-index: 999;
   box-shadow: 0 2px 8px var(--shadow-medium);
+  transition: box-shadow 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 4px 12px var(--shadow-dark);
 }
 
 .logo {
@@ -48,22 +53,33 @@ header {
   color: var(--text-black);
   font-weight: bold;
 }
+
 nav{
-    margin-right:50px;
+  margin-right: 50px;
 }
 
+/* UPDATED: Added transition and positioning for the hover effect */
 nav a {
+  display: inline-block; /* Required for transform to work */
   margin: 0 15px;
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s; /* Animate color and transform */
+  background-color: transparent;
+  border-radius: 15px;
+  padding:3px;
+  padding-left: 13px;
+  padding-right: 13px;
 }
 
+/* UPDATED: Added transform to move the link up on hover */
 nav a:hover,
 nav a:focus {
-  color: var(--text-black);
+  
+  background-color: var(--bg-secondary);
 }
+
 
 /* Hero Section */
 .hero {
@@ -72,8 +88,8 @@ nav a:focus {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  height: 100vh;
-  padding: 0 10%;
+  min-height: 100vh;
+  padding: 80px 10% 0;
   background: var(--bg-primary);
   text-align: left;
 }
@@ -142,8 +158,8 @@ section {
 }
 
 h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2.5em;
+  margin-bottom: 40px;
   color: var(--text-black);
 }
 
@@ -308,9 +324,10 @@ h2 {
   overflow-x: auto;
   gap: 35px;
   padding: 20px 10px; 
-  margin: 40px -10px 0;
+  margin: 0 -10px;
   -ms-overflow-style: none;  
   scrollbar-width: none;  
+  -webkit-overflow-scrolling: touch;
 }
 
 .projects-grid::-webkit-scrollbar {
@@ -327,13 +344,13 @@ h2 {
   display: flex;
   flex-direction: column;
   text-align: left;
-  transform: translateZ(0); /* Stabilizes the card's rendering layer */
+  transform: translateZ(0); 
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover,
 .project-card:focus-within {
-  transform: translateY(-8px) translateZ(0); /* Keeps the card stable on hover */
+  transform: translateY(-8px) translateZ(0);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
@@ -341,7 +358,7 @@ h2 {
   position: absolute;
   top: 50%;
   z-index: 10;
-  transform: translateY(-50%) translateZ(0); /* Forces hardware acceleration */
+  transform: translateY(-50%) translateZ(0);
   background-color: var(--bg-card);
   color: var(--text-black);
   border: 1px solid var(--border-color);
@@ -361,7 +378,7 @@ h2 {
 .scroll-btn:focus {
   background-color: var(--text-black);
   color: var(--text-white);
-  transform: translateY(-50%) translateZ(0) scale(1.05); /* Keeps the fix active on hover */
+  transform: translateY(-50%) translateZ(0) scale(1.05);
 }
 
 #scroll-left-btn {
@@ -378,7 +395,6 @@ h2 {
   flex-direction: column;
   align-items: center;   
   gap: 30px;
-  margin-top: 40px;
 }
 
 .achievement-card {
@@ -424,20 +440,17 @@ h2 {
 
 /* Contact Section */
 .contact-container {
-  /* Creates the main two-column layout */
   display: flex;
+  flex-wrap: wrap;
   gap: 55px;
-  margin-top: 40px;
   text-align: left;
 }
 
 .contact-details, 
 .contact-form {
-  /* Each column takes up half the space */
-  flex: 1; 
+  flex: 1 1 400px;
 }
 
-/* --- Left Column: Details --- */
 .contact-details h3 {
   font-size: 1.8em;
   color: var(--text-black);
@@ -450,7 +463,6 @@ h2 {
 }
 
 .contact-links {
-  /* Stacks the links vertically */
   display: flex;
   flex-direction: column; 
   align-items: flex-start;
@@ -465,14 +477,12 @@ h2 {
   color: var(--text-dark);
   font-size: 1.1em;
   font-weight: 500;
-  /* Enables smooth animations for color and position */
   transition: color 0.3s, transform 0.3s;
 }
 
 .contact-links a:hover,
 .contact-links a:focus {
   color: var(--text-black);
-  /* Slides the link to the right on hover */
   transform: translateX(5px);
 }
 
@@ -481,7 +491,6 @@ h2 {
   height: 28px;
 }
 
-/* --- Right Column: Form --- */
 .contact-form form {
   display: flex;
   flex-direction: column;
@@ -501,7 +510,6 @@ h2 {
   border-radius: 8px;
   margin-bottom: 20px;
   background-color: var(--bg-card);
-  /* Enables smooth animations for border and shadow */
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -509,81 +517,33 @@ h2 {
 .contact-form input:focus,
 .contact-form textarea:hover,
 .contact-form textarea:focus {
-  outline: none; /* Removes default browser focus ring */
-  border-color: var(--text-black); /* Changes border color */
-  box-shadow: 0 0 8px rgba(47, 34, 5, 0.1); /* Adds a subtle glow */
+  outline: none;
+  border-color: var(--text-black);
+  box-shadow: 0 0 8px rgba(47, 34, 5, 0.1);
 }
 
 .contact-form textarea {
-  /* Allows user to resize the message box vertically */
   resize: vertical; 
 }
 
 .contact-form button {
-  /* Makes button only as wide as its text */
   width: fit-content; 
   border: none;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--bg-primary);
-    color: var(--text-medium);
-    font-size: 0.9em;
-    border-top: 1px solid var(--border-color);
+  text-align: center;
+  padding: 20px;
+  background: var(--bg-primary);
+  color: var(--text-medium);
+  font-size: 0.9em;
+  border-top: 1px solid var(--border-color);
 }
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  section {
-    padding: 100px 10%;
-  }
-
-  header {
-    padding: 15px 20px;
-  }
-  
-  nav a {
-    margin: 0 8px;
-    font-size: 0.9em;
-  }
-
-  .profile-pic {
-    width: 120px;
-    height: 120px;
-  }
-
-  .hero h2 {
-    font-size: 2em;
-  }
-
-  .subtitle {
-    font-size: 1.1em;
-  }
-  
-  /* --- FIX FOR MOBILE RESPONSIVENESS --- */
-  .hero {
-    flex-direction: column; 
-    text-align: center;
-    padding-top: 100px;
-  }
-
-  #scroll-left-btn {
-    left: 10px; 
-  }
-
-  #scroll-right-btn {
-    right: 10px;
-  }
-}
-
 
 /* --- Success Popup Styles --- */
 .popup-hidden {
-  display: none; /* Hides the popup by default */
+  display: none;
 }
 
 #success-popup {
@@ -593,7 +553,7 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  display: flex; /* This makes it visible and centers the content */
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1001;
@@ -631,9 +591,120 @@ footer {
   cursor: pointer;
 }
 
-@media (max-width: 620px) {
+/* ==========================================================================
+   Responsive Design Adjustments
+   ========================================================================== */
+
+/* --- Tablet & Medium Screens (for screens smaller than 1024px) --- */
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 2.2em;
+    }
+
+    section {
+        padding: 100px 8%;
+    }
+
+    /* Stack the contact section columns for better readability */
+    .contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+
+/* --- Mobile & Small Tablet Screens (for screens smaller than 768px) --- */
+@media (max-width: 768px) {
+    /* REVISED: Keep header as a row but center items and allow wrapping */
+    header {
+        padding: 15px 20px;
+        flex-wrap: wrap; /* Allows nav to drop below logo if needed */
+        justify-content: center; /* Center logo and nav for a cleaner look */
+        gap: 15px;
+    }
+
     nav {
-        font-size:smaller;
-        margin-right:20px;
+        margin-right: 0;
+    }
+
+    /* REVISED: Reduced top padding as the header is no longer excessively tall */
+    .hero {
+        flex-direction: column; 
+        text-align: center;
+        padding-top: 120px; /* Reduced from 150px, provides adequate space */
+        gap: 30px;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    
+    #resumebutton {
+        margin-left: 15px;
+    }
+
+    /* Stack education header items for better vertical flow */
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    /* Hide the scroll buttons on touch devices, as swiping is more natural */
+    .scroll-btn {
+        display: none;
+    }
+}
+
+
+/* --- Small Mobile Screens (for screens smaller than 480px) --- */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    
+    /* Make the buttons stack vertically for easier tapping */
+    .hero .cta-btn {
+        display: block;
+        margin: 15px auto;
+    }
+
+    #resumebutton {
+        margin-left: 0; /* Remove left margin when stacked */
+    }
+
+    .logo {
+        font-size: 1.3em;
+    }
+
+    nav a {
+        margin: 0 8px; /* Slightly increase space for easier tapping */
+        font-size: 0.9em;
+    }
+    
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 80px 5%;
+    }
+
+    .project-card {
+        flex-basis: 280px;
+        padding: 25px;
     }
 }
