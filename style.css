@@ -321,37 +321,52 @@ h2 {
 .projects-grid {
   display: flex;        
   flex-wrap: nowrap;   
-  overflow-x: auto;
+  overflow-x: auto; /* This enables the scrolling */
   gap: 35px;
   padding: 20px 10px; 
   margin: 0 -10px;
   -ms-overflow-style: none;  
   scrollbar-width: none;  
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
 
 .projects-grid::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hides the scrollbar */
 }
 
 .project-card {
-  flex: 0 0 340px;
+  /* Adjusted card width as per your code */
+  flex: 0 0 280px; 
   background: var(--bg-primary);
   color: var(--text-dark);
-  padding: 35px;
+  padding: 25px;
   border-radius: 18px;
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   transform: translateZ(0); 
   transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 17px;
+  
+}
+
+.project-card p{
+  font-size: 16px;
+  text-align: justify;
+}
+.project-info
+{
+  padding: 2px;
+  padding-top: 0px;
+  padding-bottom :0px;
+  
 }
 
 .project-card:hover,
 .project-card:focus-within {
   transform: translateY(-8px) translateZ(0);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-btn {
@@ -381,12 +396,25 @@ h2 {
   transform: translateY(-50%) translateZ(0) scale(1.05);
 }
 
+/* Adjusted arrow positions as per your code */
 #scroll-left-btn {
-  left: -25px;
+  left: -60px;
 }
 
 #scroll-right-btn {
-  right: -25px;
+  right: -60px;
+}
+
+/* --- ADDED: Media Query for the 3-Card Desktop View --- */
+@media (min-width: 1200px) {
+  .projects-container {
+    /* Set a fixed width to show exactly 3 cards.
+       Calculation: (3 cards * 330px) + (2 gaps * 35px) = 1060px */
+    max-width: 1100px;
+
+    /* Center the container on the page */
+    margin: 0 auto;
+  }
 }
 
 /* Achievements Section */
@@ -395,6 +423,15 @@ h2 {
   flex-direction: column;
   align-items: center;   
   gap: 30px;
+  
+  /* ADDED: Set a maximum height, roughly equivalent to 3 cards */
+  max-height: 650px;
+
+  /* ADDED: Enable vertical scrolling when content overflows the container */
+  overflow-y: auto;
+
+  /* ADDED: Add some padding to create space for the scrollbar */
+  padding: 10px 20px 10px 10px;
 }
 
 .achievement-card {
@@ -406,6 +443,19 @@ h2 {
   border: 1px solid var(--border-color);
   text-align: left;
   transition: transform 0.3s, box-shadow 0.3s;
+}
+.achievements-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.achievements-grid::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+.achievements-grid::-webkit-scrollbar-thumb {
+  background-color: var(--text-black);
+  border-radius: 10px;
 }
 
 .achievement-card:hover,
