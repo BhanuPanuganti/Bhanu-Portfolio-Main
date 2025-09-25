@@ -54,21 +54,23 @@ header:hover {
   font-weight: bold;
 }
 
-nav{
+nav {
   margin-right: 50px;
 }
 
 /* UPDATED: Added transition and positioning for the hover effect */
 nav a {
-  display: inline-block; /* Required for transform to work */
+  display: inline-block;
+  /* Required for transform to work */
   margin: 0 10px;
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s, transform 0.3s; /* Animate color and transform */
+  transition: color 0.3s, transform 0.3s;
+  /* Animate color and transform */
   background-color: transparent;
   border-radius: 15px;
-  padding:3px;
+  padding: 3px;
   padding-left: 13px;
   padding-right: 13px;
 }
@@ -76,7 +78,7 @@ nav a {
 /* UPDATED: Added transform to move the link up on hover */
 nav a:hover,
 nav a:focus {
-  
+
   background-color: var(--bg-secondary);
 }
 
@@ -144,7 +146,7 @@ nav a:focus {
 }
 
 #resumebutton {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 /* Sections */
@@ -171,7 +173,7 @@ h2 {
 .education-container {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   gap: 30px;
   width: 100%;
 }
@@ -319,24 +321,27 @@ h2 {
 }
 
 .projects-grid {
-  display: flex;        
-  flex-wrap: nowrap;   
-  overflow-x: auto; /* This enables the scrolling */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  /* This enables the scrolling */
   gap: 35px;
-  padding: 20px 10px; 
+  padding: 20px 10px;
   margin: 0 -10px;
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on mobile */
 }
 
 .projects-grid::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar */
+  display: none;
+  /* Hides the scrollbar */
 }
 
 .project-card {
   /* Adjusted card width as per your code */
-  flex: 0 0 280px; 
+  flex: 0 0 280px;
   background: var(--bg-primary);
   color: var(--text-dark);
   padding: 25px;
@@ -345,22 +350,44 @@ h2 {
   display: flex;
   flex-direction: column;
   text-align: center;
-  transform: translateZ(0); 
+  transform: translateZ(0);
   transition: transform 0.3s, box-shadow 0.3s;
   font-size: 17px;
-  
+
 }
 
-.project-card p{
+.project-card p {
   font-size: 16px;
   text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.project-info
-{
+
+.project-info {
   padding: 2px;
   padding-top: 0px;
-  padding-bottom :0px;
-  
+  padding-bottom: 0px;
+
+}
+
+.codelinkdiv {
+  background-color: #2f2205;
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 19px;
+  display: flex;
+  max-width: max-content;
+
+}
+
+.code-button {
+  color: white;
+  text-decoration: none;
+  position: relative;
 }
 
 .project-card:hover,
@@ -421,9 +448,9 @@ h2 {
 .achievements-grid {
   display: flex;
   flex-direction: column;
-  align-items: center;   
+  align-items: center;
   gap: 30px;
-  
+
   /* ADDED: Set a maximum height, roughly equivalent to 3 cards */
   max-height: 650px;
 
@@ -444,6 +471,7 @@ h2 {
   text-align: left;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .achievements-grid::-webkit-scrollbar {
   width: 8px;
 }
@@ -496,7 +524,7 @@ h2 {
   text-align: left;
 }
 
-.contact-details, 
+.contact-details,
 .contact-form {
   flex: 1 1 400px;
 }
@@ -514,7 +542,7 @@ h2 {
 
 .contact-links {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
   gap: 20px;
 }
@@ -573,11 +601,11 @@ h2 {
 }
 
 .contact-form textarea {
-  resize: vertical; 
+  resize: vertical;
 }
 
 .contact-form button {
-  width: fit-content; 
+  width: fit-content;
   border: none;
 }
 
@@ -610,7 +638,7 @@ footer {
 }
 
 #success-popup.popup-hidden {
-  display: none; 
+  display: none;
 }
 
 .popup-content {
@@ -647,114 +675,120 @@ footer {
 
 /* --- Tablet & Medium Screens (for screens smaller than 1024px) --- */
 @media (max-width: 1024px) {
-    h2 {
-        font-size: 2.2em;
-    }
+  h2 {
+    font-size: 2.2em;
+  }
 
-    section {
-        padding: 100px 8%;
-    }
+  section {
+    padding: 100px 8%;
+  }
 
-    /* Stack the contact section columns for better readability */
-    .contact-container {
-        flex-direction: column;
-        gap: 40px;
-    }
+  /* Stack the contact section columns for better readability */
+  .contact-container {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
-
 /* --- Mobile & Small Tablet Screens (for screens smaller than 768px) --- */
-@media (max-width: 768px) {
-    /* REVISED: Keep header as a row but center items and allow wrapping */
-    header {
-        padding: 15px 20px;
-        flex-wrap: wrap; /* Allows nav to drop below logo if needed */
-        justify-content: center; /* Center logo and nav for a cleaner look */
-        gap: 15px;
-    }
+@media (max-width: 831px) {
 
-    nav {
-        margin-right: 0;
-    }
+  /* REVISED: Keep header as a row but center items and allow wrapping */
+  header {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    /* Allows nav to drop below logo if needed */
+    justify-content: center;
+    /* Center logo and nav for a cleaner look */
+    gap: 15px;
+  }
 
-    /* REVISED: Reduced top padding as the header is no longer excessively tall */
-    .hero {
-        flex-direction: column; 
-        text-align: center;
-        padding-top: 120px; /* Reduced from 150px, provides adequate space */
-        gap: 30px;
-    }
+  nav {
+    margin-right: 0;
+    font-size: smaller;
+  }
 
-    .hero h2 {
-        font-size: 2.2em;
-    }
+  /* REVISED: Reduced top padding as the header is no longer excessively tall */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px;
+    /* Reduced from 150px, provides adequate space */
+    gap: 30px;
+  }
 
-    .subtitle {
-        font-size: 1.2em;
-    }
+  .hero h2 {
+    font-size: 2.2em;
+  }
 
-    .profile-pic {
-        width: 150px;
-        height: 150px;
-    }
-    
-    #resumebutton {
-        margin-left: 15px;
-    }
+  .subtitle {
+    font-size: 1.2em;
+  }
 
-    /* Stack education header items for better vertical flow */
-    .education-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
 
-    /* Hide the scroll buttons on touch devices, as swiping is more natural */
-    .scroll-btn {
-        display: none;
-    }
+  #resumebutton {
+    margin-left: 15px;
+  }
+
+  /* Stack education header items for better vertical flow */
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  /* Hide the scroll buttons on touch devices, as swiping is more natural */
+  .scroll-btn {
+    display: none;
+  }
 }
 
 
 /* --- Small Mobile Screens (for screens smaller than 480px) --- */
 @media (max-width: 480px) {
-    body {
-        font-size: 15px;
-    }
-    
-    /* Make the buttons stack vertically for easier tapping */
-    .hero .cta-btn {
-        display: block;
-        margin: 15px auto;
-    }
+  body {
+    font-size: 15px;
+  }
 
-    #resumebutton {
-        margin-left: 0; /* Remove left margin when stacked */
-    }
+  /* Make the buttons stack vertically for easier tapping */
+  .hero .cta-btn {
+    display: block;
+    margin: 15px auto;
+  }
 
-    .logo {
-        font-size: 1.3em;
-    }
+  #resumebutton {
+    margin-left: 0;
+    /* Remove left margin when stacked */
+  }
 
-    nav a {
-        margin: 0 8px; /* Slightly increase space for easier tapping */
-        font-size: 0.9em;
-    }
-    
-    .hero h2 {
-        font-size: 1.8em;
-    }
+  .logo {
+    font-size: 1.3em;
+  }
 
-    .subtitle {
-        font-size: 1em;
-    }
+  nav a {
+    margin: 0 8px;
+    /* Slightly increase space for easier tapping */
+    font-size: 0.9em;
+  }
 
-    section {
-        padding: 80px 5%;
-    }
+  .hero h2 {
+    font-size: 1.8em;
+  }
 
-    .project-card {
-        flex-basis: 280px;
-        padding: 25px;
-    }
+  .subtitle {
+    font-size: 1em;
+  }
+
+  section {
+    padding: 80px 5%;
+  }
+
+  .project-card {
+    flex-basis: 280px;
+    padding: 25px;
+  }
 }
